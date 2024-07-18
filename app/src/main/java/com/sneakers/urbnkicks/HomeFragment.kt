@@ -1,6 +1,7 @@
 package com.sneakers.urbnkicks
 
 import android.content.ClipData.Item
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -11,9 +12,11 @@ import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.card.MaterialCardView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.ChildEventListener
 import com.google.firebase.database.DataSnapshot
@@ -29,14 +32,27 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val cart = view.findViewById<ImageView>(R.id.cart)
-
+        val search_bar = view.findViewById<MaterialCardView>(R.id.search_card)
 
         var banner = ShopRepository().getBanners()
         var b_rv = view.findViewById<RecyclerView>(R.id.banner_recycler_view)
 
         b_rv.adapter = BannerAdapter(banner)
         b_rv.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+
+        search_bar.setOnClickListener {
+
+            /* val transaction = requireActivity().supportFragmentManager.beginTransaction()
+
+            // Replace the current fragment with the new fragment
+            transaction.replace(R.id.fragmentHodler, SearchFragment())
+
+            // Add this transaction to the back stack
+            transaction.addToBackStack(null)
+
+            // Commit the transaction
+            transaction.commit() */
+        }
 
         lifecycleScope.launch {
             if (banner.size > 1) {
