@@ -1,0 +1,10 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.UrbnKicks" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/accent</item> <!-- Change primary color -->
+        <item name="colorPrimaryDark">@color/accent</item> <!-- Change primary dark color -->
+        <item name="colorAccent">@color/accent</item> <!-- Change accent color -->
+    </style>
+
+    <style name="Theme.UrbnKicks" parent="Base.Theme.UrbnKicks" />
+</resources>

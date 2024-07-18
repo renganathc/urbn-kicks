@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "66309338696",
+    "project_id": "urbnkicks-325ea",
+    "storage_bucket": "urbnkicks-325ea.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:66309338696:android:2405dfe945b166ae3a0a7d",
+        "android_client_info": {
+          "package_name": "com.sneakers.urbnkicks"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAdTaPEXoFcwrMe9PIodpS-HPEazWeB25A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
