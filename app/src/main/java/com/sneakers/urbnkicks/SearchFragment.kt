@@ -1,5 +1,6 @@
 package com.sneakers.urbnkicks
 
+import android.content.Intent
 import android.os.Bundle
 import android.os.Looper
 import android.util.Log
@@ -44,7 +45,13 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
 
         val search_result_items = mutableListOf<ItemListing>()
 
-        val adapter = SearchResultAdapter(search_result_items)
+        fun handleClick(item: ItemListing) {
+            val intent = Intent(requireContext(), ListingActivity::class.java)
+            intent.putExtra("item", item)
+            startActivity(intent)
+        }
+
+        val adapter = SearchResultAdapter(search_result_items, ::handleClick)
 
         view.findViewById<ImageView>(R.id.cart).setOnClickListener {
             Toast.makeText(requireContext(), "Feature under Development", Toast.LENGTH_SHORT).show()

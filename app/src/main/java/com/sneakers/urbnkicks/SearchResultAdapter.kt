@@ -10,7 +10,7 @@ import androidx.appcompat.view.menu.MenuView.ItemView
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 
-class SearchResultAdapter(val item : List<ItemListing>) : RecyclerView.Adapter<SearchResultAdapter.SearchResultViewHolder>() {
+class SearchResultAdapter(val item : List<ItemListing>, val onClickItem: (ItemListing) -> Unit) : RecyclerView.Adapter<SearchResultAdapter.SearchResultViewHolder>() {
     inner class SearchResultViewHolder (itemView : View) : RecyclerView.ViewHolder(itemView)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SearchResultViewHolder {
@@ -34,6 +34,10 @@ class SearchResultAdapter(val item : List<ItemListing>) : RecyclerView.Adapter<S
                 .fit()
                 .centerCrop()
                 .into(findViewById<ImageView>(R.id.pic))
+        }
+
+        holder.itemView.setOnClickListener {
+            onClickItem(item[position])
         }
     }
 
