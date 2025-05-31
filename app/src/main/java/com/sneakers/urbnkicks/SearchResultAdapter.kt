@@ -27,7 +27,7 @@ class SearchResultAdapter(val item : List<ItemListing>) : RecyclerView.Adapter<S
             findViewById<TextView>(R.id.model).text = item[position].model
             findViewById<TextView>(R.id.brand).text = item[position].brand
             findViewById<TextView>(R.id.price).text = item[position].price.toString()
-            findViewById<TextView>(R.id.mrp).text = item[position].mrp.toString()
+            findViewById<TextView>(R.id.mrp).text = "₹ " + item[position].mrp.toString()
 
             Picasso.get()
                 .load(item[position].image_link)

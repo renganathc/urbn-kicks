@@ -27,7 +27,7 @@ class BannerAdapter (var banner_info: List<Banner>) :
                 .load(banner_info[position].banner_link)
                 .fit()
                 .centerCrop()
-                .into(banner) //
+                .into(banner)
         }
     }
 }

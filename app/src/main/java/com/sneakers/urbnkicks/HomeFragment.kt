@@ -1,6 +1,7 @@
 package com.sneakers.urbnkicks
 
 import android.content.ClipData.Item
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -11,6 +12,7 @@ import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -29,6 +31,22 @@ import kotlin.math.log
 
 class HomeFragment : Fragment(R.layout.fragment_home) {
 
+    interface OnDataPassListener {
+        fun onDataPassed(data: String)
+    }
+
+    private var onDataPassListener: OnDataPassListener? = null
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        // Ensure the parent activity implements the interface
+        if (context is OnDataPassListener) {
+            onDataPassListener = context
+        } else {
+            throw ClassCastException("$context must implement OnDataPassListener")
+        }
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -37,22 +55,20 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         var banner = ShopRepository().getBanners()
         var b_rv = view.findViewById<RecyclerView>(R.id.banner_recycler_view)
 
+        view.findViewById<ImageView>(R.id.cart).setOnClickListener {
+            Toast.makeText(requireContext(), "Feature under Development", Toast.LENGTH_SHORT).show()
+        }
+
         b_rv.adapter = BannerAdapter(banner)
         b_rv.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
 
         search_bar.setOnClickListener {
 
-            /* val transaction = requireActivity().supportFragmentManager.beginTransaction()
+            onDataPassListener?.onDataPassed("OPEN_SEARCH")
 
-            // Replace the current fragment with the new fragment
-            transaction.replace(R.id.fragmentHodler, SearchFragment())
-
-            // Add this transaction to the back stack
-            transaction.addToBackStack(null)
-
-            // Commit the transaction
-            transaction.commit() */
         }
+
+        // Might not be the cleanest but works. Written in my early dev days. Keeping it for nostalgia :) '
 
         lifecycleScope.launch {
             if (banner.size > 1) {
@@ -98,9 +114,15 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             var pop_rv = view.findViewById<RecyclerView>(R.id.popular_shoes_recycler_view)
             var s_rv = view.findViewById<RecyclerView>(R.id.on_sale_recycler_view)
 
-            val adapter_new = ItemListingAdapter(new_arrivals)
-            val adapter_pop = ItemListingAdapter(popular)
-            val adapter_sale = ItemListingAdapter(sale)
+            fun handleClick(item: ItemListing) {
+                val intent = Intent(requireContext(), ListingActivity::class.java)
+                intent.putExtra("item", item)
+                startActivity(intent)
+            }
+
+            val adapter_new = ItemListingAdapter(new_arrivals, ::handleClick)
+            val adapter_pop = ItemListingAdapter(popular, ::handleClick)
+            val adapter_sale = ItemListingAdapter(sale, ::handleClick)
 
             FirebaseDatabase.getInstance("https://urbnkicks-325ea-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference("/products")
                 .addChildEventListener(object : ChildEventListener {

@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.widget.Button
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
@@ -22,16 +23,36 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import java.util.stream.IntStream.range
 
-class ShopActivity : AppCompatActivity() {
+class ShopActivity : AppCompatActivity(), HomeFragment.OnDataPassListener {
+
+    private var at_home = true
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        if (!at_home) {
+
+        }
+    }
+
+    override fun onDataPassed(data: String) {
+        // Handle the data passed from the fragment
+        if (data == "OPEN_SEARCH") {
+            supportFragmentManager.beginTransaction().apply {
+                replace(R.id.fragmentHodler, SearchFragment())
+                commit()
+            }
+            resetNavMenu()
+            findViewById<ImageView>(R.id.search).setColorFilter(ContextCompat.getColor(this, R.color.accent))
+            at_home = false
+        }
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_shop)
 
-
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-
-        var at_home = true
 
         supportFragmentManager.beginTransaction().apply {
             replace(R.id.fragmentHodler, HomeFragment())
@@ -73,8 +94,7 @@ class ShopActivity : AppCompatActivity() {
 
             resetNavMenu()
             findViewById<ImageView>(R.id.search).setColorFilter(ContextCompat.getColor(this, R.color.accent))
-            at_home = false
-        }
+         }
 
         findViewById<ImageView>(R.id.wishlist).setOnClickListener {
             supportFragmentManager.beginTransaction().apply {
@@ -83,7 +103,6 @@ class ShopActivity : AppCompatActivity() {
             }
             resetNavMenu()
             findViewById<ImageView>(R.id.wishlist).setColorFilter(ContextCompat.getColor(this, R.color.accent))
-            at_home = false
         }
 
         findViewById<ImageView>(R.id.profile).setOnClickListener {
@@ -93,7 +112,6 @@ class ShopActivity : AppCompatActivity() {
             }
             resetNavMenu()
             findViewById<ImageView>(R.id.profile).setColorFilter(ContextCompat.getColor(this, R.color.accent))
-            at_home = false
         }
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
@@ -104,6 +122,7 @@ class ShopActivity : AppCompatActivity() {
     }
 
     private fun resetNavMenu() {
+        at_home = false
         findViewById<ImageView>(R.id.home).setColorFilter(null)
         findViewById<ImageView>(R.id.search).setColorFilter(null)
         findViewById<ImageView>(R.id.wishlist).setColorFilter(null)

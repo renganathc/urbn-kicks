@@ -1,5 +1,6 @@
 package com.sneakers.urbnkicks
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,7 +11,7 @@ import com.sneakers.urbnkicks.ItemListing
 import com.squareup.picasso.Picasso
 import kotlin.math.roundToInt
 
-class ItemListingAdapter(var items : List<ItemListing>) : RecyclerView.Adapter<ItemListingAdapter.NAViewHolder>() {
+class ItemListingAdapter(var items : List<ItemListing>, private val onItemClick: (ItemListing) -> Unit) : RecyclerView.Adapter<ItemListingAdapter.NAViewHolder>() {
     inner class NAViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NAViewHolder {
@@ -33,6 +34,7 @@ class ItemListingAdapter(var items : List<ItemListing>) : RecyclerView.Adapter<I
             val price_data = items[position].price
             val mrp_data = items[position].mrp
 
+            val buck_price = price_data.toString()
             val char_price =  price_data.toString().toCharArray()
 
             var discount_data = (mrp_data!! - price_data!!)/mrp_data!!
@@ -57,6 +59,9 @@ class ItemListingAdapter(var items : List<ItemListing>) : RecyclerView.Adapter<I
                 .into(shoe_img)
 
 
+        }
+        holder.itemView.setOnClickListener {
+            onItemClick(items[position])
         }
     }
 }

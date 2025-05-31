@@ -1,0 +1,335 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF">
+
+    <LinearLayout
+        android:id="@+id/rootContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/shoeImageView"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:adjustViewBounds="true"
+            android:scaleType="centerCrop" />
+
+        <LinearLayout
+            android:id="@+id/contentContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="12dp" />
+
+            <!-- Brand (bold) above Model (normal) -->
+            <TextView
+                android:id="@+id/brandTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="New Balance"
+                android:textSize="27sp"
+                android:textStyle="bold"
+                android:textColor="#212121" />
+
+            <TextView
+                android:id="@+id/modelTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="574 Core"
+                android:textSize="20sp"
+                android:textStyle="normal"
+                android:textColor="#424242" />
+
+            <!-- Price, MRP, Discount Row -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="8dp"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:id="@+id/priceTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="₹4500"
+                    android:textSize="29dp"
+                    android:textStyle="bold"
+                    android:textColor="#ED9300" />
+
+                <View
+                    android:layout_width="8dp"
+                    android:layout_height="match_parent" />
+
+                <TextView
+                    android:id="@+id/mrpTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="₹5400"
+                    android:textSize="18dp"
+                    android:textStyle="normal"
+                    android:textColor="#757575" />
+
+                <View
+                    android:layout_width="8dp"
+                    android:layout_height="match_parent" />
+
+                <TextView
+                    android:id="@+id/discountTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="(16% OFF)"
+                    android:textSize="16dp"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="1dp"
+                    android:textColor="#F44336" />
+            </LinearLayout>
+
+            <!-- Divider -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="12dp"
+                android:background="#E0E0E0" />
+
+            <!-- Description Section -->
+            <TextView
+                android:id="@+id/descriptionLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="Description"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="#212121" />
+
+            <TextView
+                android:id="@+id/descriptionTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:text="The New Balance 574 Core is a classic sneaker with suede and mesh upper, ENCAP midsole for support, and rubber outsole for durability."
+                android:textSize="16sp"
+                android:textColor="#424242" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="12dp"
+                android:background="#E0E0E0" />
+
+            <TextView
+                android:id="@+id/colorsLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="Available Colors"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="#212121" />
+
+            <LinearLayout
+                android:id="@+id/colorsContainer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="●"
+                    android:textSize="28dp"
+                    android:textColor="#E53935"
+                    android:layout_marginEnd="12dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="●"
+                    android:textSize="28dp"
+                    android:textColor="#1976D2"
+                    android:layout_marginEnd="12dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="●"
+                    android:textSize="28dp"
+                    android:textColor="#388E3C"
+                    android:layout_marginEnd="12dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="●"
+                    android:textSize="28dp"
+                    android:textColor="#E7D531"
+                    android:layout_marginEnd="12dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="●"
+                    android:textSize="28dp"
+                    android:textColor="#424242"
+                    android:layout_marginEnd="12dp"/>
+            </LinearLayout>
+
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="12dp"
+                android:background="#E0E0E0" />
+
+            <!-- Attributes (Category & Gender & Tags) Section -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="12dp">
+
+                <!-- Category Row -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="4dp">
+
+                    <TextView
+                        android:id="@+id/categoryLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Category:"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:textColor="#212121" />
+
+                    <View
+                        android:layout_width="8dp"
+                        android:layout_height="match_parent" />
+
+                    <TextView
+                        android:id="@+id/categoryTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Casual"
+                        android:textSize="16sp"
+                        android:textColor="#424242" />
+                </LinearLayout>
+
+                <!-- Gender Row -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="10dp">
+
+                    <TextView
+                        android:id="@+id/genderLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Gender:"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:textColor="#212121" />
+
+                    <View
+                        android:layout_width="8dp"
+                        android:layout_height="match_parent" />
+
+                    <TextView
+                        android:id="@+id/genderTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Unisex"
+                        android:textSize="16sp"
+                        android:textColor="#424242" />
+                </LinearLayout>
+
+                <!-- Tags Row -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="10dp">
+
+                    <TextView
+                        android:id="@+id/tagsLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Tags:"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:textColor="#212121" />
+
+                    <View
+                        android:layout_width="8dp"
+                        android:layout_height="match_parent" />
+
+                    <TextView
+                        android:id="@+id/tagsTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="sneakers, New Balance, lifestyle"
+                        android:textSize="16sp"
+                        android:textColor="#424242" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Buttons Section: Buy Now & Add to Cart side by side -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="16dp"
+                android:gravity="center">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnBuyNow"
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    android:layout_weight="1"
+                    android:text="Buy Now"
+                    android:textAllCaps="false"
+                    android:textSize="16sp"
+                    android:backgroundTint="@color/accent"
+                    app:cornerRadius="10dp"
+                    android:textColor="#FFFFFF"
+                    android:layout_marginEnd="8dp" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnAddToCart"
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    android:layout_weight="1"
+                    android:text="Add to Cart"
+                    android:textAllCaps="false"
+                    android:textSize="16sp"
+                    android:backgroundTint="@android:color/transparent"
+                    app:strokeColor="@color/accent"
+                    app:strokeWidth="2dp"
+                    app:cornerRadius="10dp"
+                    android:textColor="@color/accent"
+                    android:layout_marginEnd="8dp" />
+
+
+            </LinearLayout>
+
+        </LinearLayout> <!-- End of contentContainer -->
+
+    </LinearLayout> <!-- End of rootContainer -->
+
+</ScrollView>

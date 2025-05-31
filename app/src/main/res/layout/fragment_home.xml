@@ -90,18 +90,18 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <EditText
+            <TextView
                 android:id="@+id/search_bar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginStart="11dp"
                 android:layout_marginEnd="17dp"
-                android:inputType="text"
                 android:fontFamily="@font/futura"
+                android:textColor="#B3B1B1"
                 android:background="@drawable/edit_text"
                 android:textSize="15dp"
-                android:hint="What are you looking for ?" />
+                android:text="What are you looking for ?" />
 
         </LinearLayout>
 
